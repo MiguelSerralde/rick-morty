@@ -1,6 +1,6 @@
 const createCard = (character) => {
     const card = document.createElement("div")
-    card.classList.add ("char-chard")    
+    card.classList.add ("char-card")    
     console.log(character)
     const infoDiv = document.createElement("div")
     infoDiv.classList.add("character-info")
