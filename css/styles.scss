@@ -1,0 +1,74 @@
+$headerColor: #48cae4;
+$gridColor: #caf0f8;
+$cardColor: #fffdee;
+$searchColor: #90e0ef;
+
+@mixin flexCenter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+header {
+    background-color: $headerColor;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.nav {
+    @include flexCenter();
+    font-size: 1.5rem;    
+
+    &-label {
+        text-decoration: none;
+        padding-left: 2rem;
+    }
+}
+
+.search {
+    padding: 2rem;
+    background-color: $searchColor;    
+    @include flexCenter();
+
+    &-label{
+        font-size: 1.2rem;
+        padding-right: 1rem;
+        font-weight: bold;
+    }
+
+    &-button{
+        font-size: 16PX;
+        background-color: $gridColor;
+        padding: 5PX;
+        margin-left: 10PX;
+        border-radius: 5px;        
+    }
+    
+}
+
+.grid {
+    background-color: $gridColor;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+}
+
+.char-card {
+    margin: 20px;
+    text-align: center;
+    border: 1px solid rgb(54, 27, 27);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: $cardColor;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: 0.5s;
+        box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
+    }
+}
