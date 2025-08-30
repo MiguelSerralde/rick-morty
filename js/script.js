@@ -1,7 +1,7 @@
 const createCard = (character) => {
     const card = document.createElement("div")
-    card.classList.add ("char-chard")
-    
+    card.classList.add ("char-chard")    
+    console.log(character)
     const infoDiv = document.createElement("div")
     infoDiv.classList.add("character-info")
 
@@ -12,22 +12,22 @@ const createCard = (character) => {
     const typesDiv = document.createElement("div")
     typesDiv.classList.add("character-types")
 
-    character.types.forEach((types) => {
+    character.types.forEach((type) => {
         const typeSpan = document.createElement("span")
         typeSpan.classList.add("character-type", type.type.name)
         typeSpan.textContent = type.type.name
-        typesDiv.appendeChild(typeSpan)
+        typesDiv.appendChild(typeSpan)
     });
 
-    infoDiv.appendeChild(name)
-    infoDiv.appendeChild(typesDiv)
+    infoDiv.appendChild(name)
+    infoDiv.appendChild(typesDiv)
 
     const imageContainer = document.createElement("div")
     imageContainer.classList.add("character-image-container")
 
     const image = document.createElement("img")
     image.classList.add("character-image")
-    image.scr = character.spites.fron.default
+    image.src = character.sprites.front_default    
     image.alt = character.name
 
     imageContainer.appendChild(image)
@@ -39,16 +39,16 @@ const createCard = (character) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://rickandmortyapi.com/api/character")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=50?")
     .then((response) => response.json())
     .then((data) => {
-        const characterGrid = document.getElementById("characyer-grid")
-        data.results.forEach((response) => {
+        const characterGrid = document.getElementById("character-grid")
+        data.results.forEach((character) => {
             fetch(character.url)
             .then((response) => response.json())
-            .then((data) => {
-                const characterData = createCard(characterData)
-                characterGrid.appendChild(characterData)
+            .then((characterData) => {
+                const characterCard = createCard(characterData)
+                characterGrid.appendChild(characterCard)
             })
         })
     }) 

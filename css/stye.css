@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+}
