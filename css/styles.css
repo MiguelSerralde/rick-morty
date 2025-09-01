@@ -48,7 +48,11 @@ header {
   grid-template-columns: repeat(5, 20%);
 }
 
-.char-card {
+.character-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
   text-align: center;
   border: 1px solid rgb(54, 27, 27);
@@ -56,9 +60,43 @@ header {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   background-color: #fffdee;
 }
-.char-card:hover {
+.character-card:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition: 0.5s;
   box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.character-image-container {
+  width: 200px;
+}
+
+.character-types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.character-type {
+  margin: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 5px;
+  text-transform: capitalize;
+}
+
+.poison {
+  background-color: rgb(159, 206, 159);
+}
+
+.fire {
+  background-color: rgb(129, 101, 101);
+}
+
+.electric {
+  background-color: rgb(174, 245, 8);
+}
+
+.water {
+  background-color: rgb(28, 214, 214);
 }/*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,6 @@
 const createCard = (character) => {
     const card = document.createElement("div")
-    card.classList.add ("char-card")    
+    card.classList.add ("character-card")    
     console.log(character)
     const infoDiv = document.createElement("div")
     infoDiv.classList.add("character-info")
@@ -38,11 +38,33 @@ const createCard = (character) => {
     return card
 }
 
+/*With Fetch
 document.addEventListener("DOMContentLoaded", () => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=50?")
     .then((response) => response.json())
     .then((data) => {
         const characterGrid = document.getElementById("character-grid")
+        data.results.forEach((character) => {
+            fetch(character.url)
+            .then((response) => response.json())
+            .then((characterData) => {
+                const characterCard = createCard(characterData)
+                characterGrid.appendChild(characterCard)
+            })
+        })
+    }) 
+    .catch((error) => {
+        console.log(error)
+    })   
+})*/
+
+//With Axios
+document.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://pokeapi.co/api/v2/pokemon", {params: {limit:40}})   
+    .then((response) => {
+        const characterGrid = document.getElementById("character-grid")
+        const { data } = response
+
         data.results.forEach((character) => {
             fetch(character.url)
             .then((response) => response.json())
