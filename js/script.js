@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })*/
 
 //With Axios
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     axios.get("https://pokeapi.co/api/v2/pokemon", {params: {limit:40}})   
     .then((response) => {
         const characterGrid = document.getElementById("character-grid")
@@ -77,4 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
         console.log(error)
     })   
+})*/
+
+const loadPokemon = async() => {
+    const characterGrid = document.getElementById("character-grid")
+    try {
+        const response = await axios.get("https://pokeapi.co/api/v2/pokemon", {params: {limit:40}})           
+        const pokemons = response.data.results
+        characterGrid.innerHTML = ''        
+
+        for (const pokemon of pokemons) {
+            const detailResponse = await axios.get(pokemon.url)
+            console.log(detailResponse)            
+            const characterCard =createCard(detailResponse.data)
+            characterGrid.appendChild(characterCard)
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    loadPokemon()
 })
