@@ -14,9 +14,9 @@ header {
 }
 .nav-label {
   font-weight: bolder;
-  color: cyan;
   text-decoration: none;
   padding-left: 2rem;
+  color: cyan;
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
@@ -48,12 +48,9 @@ header {
 }
 
 .grid {
-  background-color: #caf0f8;
-}
-
-.grid {
   display: grid;
   grid-template-columns: repeat(5, 20%);
+  background-color: #caf0f8;
 }
 
 .character-card {
@@ -66,7 +63,7 @@ header {
   border: 1px solid rgb(54, 27, 27);
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  background-color: #fffdee;
+  background-color: #90e0ef;
 }
 .character-card:hover {
   cursor: pointer;
@@ -74,21 +71,59 @@ header {
   transition: 0.5s;
   box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
 }
+.character-card .character-name {
+  margin-bottom: 0px;
+}
 
-.character-image-container {
+.character-image-container img {
   width: 200px;
+  padding: 15px;
+  border-radius: 40px;
 }
 
-.character-types {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.character-type {
-  margin: 10px;
-  border: 1px solid gray;
+.character-status {
+  margin: 1rem;
+  border: 1px solid black;
   border-radius: 10px;
   padding: 5px;
-  text-transform: capitalize;
+  text-transform: uppercase;
+}
+.character-status .Alive {
+  font-weight: bold;
+  color: rgb(39, 82, 55);
+}
+.character-status .Dead {
+  text-decoration: underline;
+  color: cyan;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  color: rgb(235, 103, 103);
+}
+.character-status .unknown {
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.movePage {
+  display: flex;
+  justify-content: center;
+}
+.movePage-load {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  font-weight: bolder;
+  background-color: #90e0ef;
+}
+.movePage-load:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+  box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1220px) {
+  .grid {
+    grid-template-columns: repeat(4, 20%);
+  }
 }/*# sourceMappingURL=styles.css.map */

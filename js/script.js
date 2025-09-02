@@ -1,6 +1,6 @@
+let page = 1
 
-const createCard = (character) => {
-    console.log("Trying to create")
+const createCard = (character) => {   
     
     const card = document.createElement("div")
     card.classList.add ("character-card")        
@@ -11,27 +11,31 @@ const createCard = (character) => {
     name.classList.add("character-name")
     name.textContent = character.name
 
-    const typesDiv = document.createElement("div")
-    typesDiv.classList.add("character-types")
+    const locationDiv = document.createElement("div")
+    locationDiv.classList.add("character-location")
     
+    const locationSpan = document.createElement("span")
+    locationSpan.classList.add("character-location" )    
+    locationSpan.textContent = character.location.name
+    locationDiv.appendChild(locationSpan)
     
-    character.location.forEach((type) => {
-        const locationdeSpan = document.createElement("span")
-        locationdeSpan.classList.add("character-location" )
-        locationdeSpan.textContent = location.name
-        typesDiv.appendChild(typeSpan)
-    });
+    const statusCharacter = document.createElement("div")
+    statusCharacter.classList.add("character-status")
+    const statusCharacterSpan = document.createElement("span")
+    statusCharacterSpan.classList = ("character-status", character.status)
+    statusCharacterSpan.textContent = character.status
     
-    /*
     infoDiv.appendChild(name)
-    infoDiv.appendChild(typesDiv)
+    infoDiv.appendChild(locationDiv)
+    infoDiv.appendChild(statusCharacter)
+    statusCharacter.appendChild(statusCharacterSpan)
 
     const imageContainer = document.createElement("div")
     imageContainer.classList.add("character-image-container")
 
     const image = document.createElement("img")
     image.classList.add("character-image")
-    image.src = character.sprites.front_default    
+    image.src = character.image
     image.alt = character.name
     
     imageContainer.appendChild(image)
@@ -40,62 +44,20 @@ const createCard = (character) => {
     card.appendChild(imageContainer)
 
     return card
-    */
+    
 }
 
-/*With Fetch
-document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=50?")
-    .then((response) => response.json())
-    .then((data) => {
-        const characterGrid = document.getElementById("character-grid")
-        data.results.forEach((character) => {
-            fetch(character.url)
-            .then((response) => response.json())
-            .then((characterData) => {
-                const characterCard = createCard(characterData)
-                characterGrid.appendChild(characterCard)
-            })
-        })
-    }) 
-    .catch((error) => {
-        console.log(error)
-    })   
-})*/
-
-//With Axios
-/*document.addEventListener("DOMContentLoaded", () => {
-    axios.get("https://pokeapi.co/api/v2/pokemon", {params: {limit:40}})   
-    .then((response) => {
-        const characterGrid = document.getElementById("character-grid")
-        const { data } = response
-
-        data.results.forEach((character) => {
-            fetch(character.url)
-            .then((response) => response.json())
-            .then((characterData) => {
-                const characterCard = createCard(characterData)
-                characterGrid.appendChild(characterCard)
-            })
-        })
-    }) 
-    .catch((error) => {
-        console.log(error)
-    })   
-})*/
-
-const loadCharecter = async() => {
+const loadCharecter = async(url) => {
     const characterGrid = document.getElementById("character-grid")
     try {
-        const response = await axios.get("https://rickandmortyapi.com/api/character", {params: {limit:40}})                   
+        const response = await axios.get(url)                   
         const characters = response.data.results
         characterGrid.innerHTML = ''        
 
         for (const character of characters) {
             const detailResponse = await axios.get(character.url)            
-            const characterCard = createCard(detailResponse.data)
-            console.log(detailResponse.data)
-            //characterGrid.appendChild(characterCard)
+            const characterCard = createCard(detailResponse.data)            
+            characterGrid.appendChild(characterCard)
         }
     }
     catch(error){
@@ -103,29 +65,66 @@ const loadCharecter = async() => {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    loadCharecter()
+    const btnPrevius = document.getElementById("btnPrevius").style.display = "none"
+    loadCharecter("https://rickandmortyapi.com/api/character/")
 })
 
-const searchPokemon = async () => {
-    const pokemonName = document.querySelector('.search-input').value.toLowerCase()
-    if (pokemonName){
+const searchCharacter = async () => {
+    const characterName = document.querySelector('.search-input').value.toLowerCase()
+    const characterGrid = document.getElementById("character-grid")
+    if (characterName){
+        document.getElementById("btnNext").style.display = "none"
         try {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-            const pokemonGrid = document.getElementById("character-grid")
-            pokemonGrid.innerHTML= ''
-            const characterCard = createCard(response.data)
-            pokemonGrid.appendChild(characterCard)
-        } catch(error) {
-            console.log("Error al buscar el pokemon: " + pokemonName)
+            const response = await axios.get(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
+            console.log(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
+            const characters = response.data.results
+            characterGrid.innerHTML = ""
+
+            for (const character of characters) {
+            const detailResponse = await axios.get(character.url)            
+            const characterCard = createCard(detailResponse.data)            
+            characterGrid.appendChild(characterCard)
         }
+        } catch(error) {
+            console.log("Error al buscar el personaje: " + characterName)
+        }
+    } else {
+        loadCharecter("https://rickandmortyapi.com/api/character/")
+        document.getElementById("btnNext").style.display = "block"
     }
 }
 
-document.querySelector(".search-button").addEventListener("click", () => {
-    searchPokemon()
+document.querySelector(".search-button").addEventListener("click", () => {    
+    searchCharacter()
 })
+
 document.querySelector(".search-input").addEventListener("keypress", function(e)  {
     if (e.key === "Enter"){        
-        searchPokemon()
+        searchCharacter()
+    } 
+})
+
+document.getElementById("btnNext").addEventListener("click", () => {
+    page = page + 1
+    if ( page > 1) {
+        document.getElementById("btnPrevius").style.display = "block"
+    } else {
+        if(page = 42){
+            document.getElementById("btnNext").style.display = "none"
+        }
+    }    
+    loadCharecter("https://rickandmortyapi.com/api/character/?page=" + page)    
+    console.log("https://rickandmortyapi.com/api/character/?page=" + page)
+})
+
+document.getElementById("btnPrevius").addEventListener("click", () => {
+    page = page - 1
+    if (page = 1){
+        document.getElementById("btnPrevius").style.display = "none"
+    }else {
+        if(page = 41){
+            document.getElementById("btnNext").style.display = "block"
+        }
     }
+    loadCharecter("https://rickandmortyapi.com/api/character/?page=" + page)    
 })
