@@ -1,7 +1,6 @@
 const createCard = (character) => {
     const card = document.createElement("div")
-    card.classList.add ("character-card")    
-    console.log(character)
+    card.classList.add ("character-card")        
     const infoDiv = document.createElement("div")
     infoDiv.classList.add("character-info")
 
@@ -87,8 +86,7 @@ const loadPokemon = async() => {
         characterGrid.innerHTML = ''        
 
         for (const pokemon of pokemons) {
-            const detailResponse = await axios.get(pokemon.url)
-            console.log(detailResponse)            
+            const detailResponse = await axios.get(pokemon.url)            
             const characterCard =createCard(detailResponse.data)
             characterGrid.appendChild(characterCard)
         }
@@ -99,4 +97,28 @@ const loadPokemon = async() => {
 }
 document.addEventListener("DOMContentLoaded", () => {
     loadPokemon()
+})
+
+const searchPokemon = async () => {
+    const pokemonName = document.getElementById('pokemon-search').value.toLowerCase()
+    if (pokemonName){
+        try {
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+            const pokemonGrid = document.getElementById("character-grid")
+            pokemonGrid.innerHTML= ''
+            const characterCard = createCard(response.data)
+            pokemonGrid.appendChild(characterCard)
+        } catch(error) {
+            console.log("Error al buscar el pokemon: " + pokemonName)
+        }
+    }
+}
+
+document.querySelector(".search-button").addEventListener("click", () => {
+    searchPokemon()
+})
+document.getElementById("pokemon-search").addEventListener("keypress", function(e)  {
+    if (e.key === "Enter"){        
+        searchPokemon()
+    }
 })
