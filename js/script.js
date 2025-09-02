@@ -1,4 +1,7 @@
+
 const createCard = (character) => {
+    console.log("Trying to create")
+    
     const card = document.createElement("div")
     card.classList.add ("character-card")        
     const infoDiv = document.createElement("div")
@@ -10,14 +13,16 @@ const createCard = (character) => {
 
     const typesDiv = document.createElement("div")
     typesDiv.classList.add("character-types")
-
-    character.types.forEach((type) => {
-        const typeSpan = document.createElement("span")
-        typeSpan.classList.add("character-type", type.type.name)
-        typeSpan.textContent = type.type.name
+    
+    
+    character.location.forEach((type) => {
+        const locationdeSpan = document.createElement("span")
+        locationdeSpan.classList.add("character-location" )
+        locationdeSpan.textContent = location.name
         typesDiv.appendChild(typeSpan)
     });
-
+    
+    /*
     infoDiv.appendChild(name)
     infoDiv.appendChild(typesDiv)
 
@@ -28,13 +33,14 @@ const createCard = (character) => {
     image.classList.add("character-image")
     image.src = character.sprites.front_default    
     image.alt = character.name
-
+    
     imageContainer.appendChild(image)
 
     card.appendChild(infoDiv)
     card.appendChild(imageContainer)
 
     return card
+    */
 }
 
 /*With Fetch
@@ -78,17 +84,18 @@ document.addEventListener("DOMContentLoaded", () => {
     })   
 })*/
 
-const loadPokemon = async() => {
+const loadCharecter = async() => {
     const characterGrid = document.getElementById("character-grid")
     try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon", {params: {limit:40}})           
-        const pokemons = response.data.results
+        const response = await axios.get("https://rickandmortyapi.com/api/character", {params: {limit:40}})                   
+        const characters = response.data.results
         characterGrid.innerHTML = ''        
 
-        for (const pokemon of pokemons) {
-            const detailResponse = await axios.get(pokemon.url)            
-            const characterCard =createCard(detailResponse.data)
-            characterGrid.appendChild(characterCard)
+        for (const character of characters) {
+            const detailResponse = await axios.get(character.url)            
+            const characterCard = createCard(detailResponse.data)
+            console.log(detailResponse.data)
+            //characterGrid.appendChild(characterCard)
         }
     }
     catch(error){
@@ -96,11 +103,11 @@ const loadPokemon = async() => {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    loadPokemon()
+    loadCharecter()
 })
 
 const searchPokemon = async () => {
-    const pokemonName = document.getElementById('pokemon-search').value.toLowerCase()
+    const pokemonName = document.querySelector('.search-input').value.toLowerCase()
     if (pokemonName){
         try {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
@@ -117,7 +124,7 @@ const searchPokemon = async () => {
 document.querySelector(".search-button").addEventListener("click", () => {
     searchPokemon()
 })
-document.getElementById("pokemon-search").addEventListener("keypress", function(e)  {
+document.querySelector(".search-input").addEventListener("keypress", function(e)  {
     if (e.key === "Enter"){        
         searchPokemon()
     }

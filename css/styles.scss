@@ -1,4 +1,4 @@
-$headerColor: #48cae4;
+$headerColor: #7664c9;
 $gridColor: #caf0f8;
 $cardColor: #fffdee;
 $searchColor: #90e0ef;
@@ -22,8 +22,15 @@ header {
     font-size: 1.5rem;    
 
     &-label {
+        font-weight: bolder;
+        color: cyan ;        
         text-decoration: none;
         padding-left: 2rem;
+        text-shadow: 
+            -1px -1px 0 black,
+             1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black;
     }
 }
 
@@ -36,6 +43,7 @@ header {
         font-size: 1.2rem;
         padding-right: 1rem;
         font-weight: bold;
+        font-style: italic;
     }
 
     &-button{
@@ -44,6 +52,11 @@ header {
         padding: 5PX;
         margin-left: 10PX;
         border-radius: 5px;        
+    }
+
+    &-input {
+        border-radius: 5px;
+        height: 25px;
     }
     
 }
@@ -94,18 +107,3 @@ header {
     text-transform: capitalize;
 }
 
-.poison {
-    background-color: rgb(159, 206, 159);
-}
-
-.fire {
-    background-color: rgb(129, 101, 101);
-}
-
-.electric {
-    background-color: rgb(174, 245, 8);
-}
-
-.water {
-    background-color: rgb(28, 214, 214);
-}

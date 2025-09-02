@@ -1,5 +1,5 @@
 header {
-  background-color: #48cae4;
+  background-color: #7664c9;
   height: 40px;
   border-radius: 10px;
 }
@@ -13,8 +13,11 @@ header {
   font-size: 1.5rem;
 }
 .nav-label {
+  font-weight: bolder;
+  color: cyan;
   text-decoration: none;
   padding-left: 2rem;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
 .search {
@@ -30,6 +33,7 @@ header {
   font-size: 1.2rem;
   padding-right: 1rem;
   font-weight: bold;
+  font-style: italic;
 }
 .search-button {
   font-size: 16PX;
@@ -37,6 +41,10 @@ header {
   padding: 5PX;
   margin-left: 10PX;
   border-radius: 5px;
+}
+.search-input {
+  border-radius: 5px;
+  height: 25px;
 }
 
 .grid {
@@ -83,20 +91,4 @@ header {
   border-radius: 10px;
   padding: 5px;
   text-transform: capitalize;
-}
-
-.poison {
-  background-color: rgb(159, 206, 159);
-}
-
-.fire {
-  background-color: rgb(129, 101, 101);
-}
-
-.electric {
-  background-color: rgb(174, 245, 8);
-}
-
-.water {
-  background-color: rgb(28, 214, 214);
 }/*# sourceMappingURL=styles.css.map */
