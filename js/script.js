@@ -12,23 +12,28 @@ const createCard = (character) => {
     name.classList.add("character-name")
     name.textContent = character.name
 
-    const locationDiv = document.createElement("div")
+    /*const locationDiv = document.createElement("div")
     locationDiv.classList.add("character-location")
     
     const locationSpan = document.createElement("span")
     locationSpan.classList.add("character-location" )    
-    locationSpan.textContent = character.location.name
+    locationSpan.innerHTML = "<b>Location:</b> " + character.location.name
     locationDiv.appendChild(locationSpan)
     
+    const species = document.createElement("span")
+    species.classList.add("character-species")
+    species.innerHTML = "<b>Species:</b> " + character.species
+
     const statusCharacter = document.createElement("div")
     statusCharacter.classList.add("character-status")
     const statusCharacterSpan = document.createElement("span")
     statusCharacterSpan.classList = ("character-status", character.status)
-    statusCharacterSpan.textContent = character.status
-    
+    statusCharacterSpan.innerHTML = "<b>Status:</b> " + character.status
+    */
     infoDiv.appendChild(name)
-    infoDiv.appendChild(locationDiv)
-    infoDiv.appendChild(statusCharacter)
+    /*infoDiv.appendChild(locationDiv)
+    locationDiv.appendChild(species)
+    locationDiv.appendChild(statusCharacter)
     statusCharacter.appendChild(statusCharacterSpan)
 
     const imageContainer = document.createElement("div")
@@ -43,7 +48,7 @@ const createCard = (character) => {
 
     card.appendChild(infoDiv)
     card.appendChild(imageContainer)
-
+    */
     return card
     
 }

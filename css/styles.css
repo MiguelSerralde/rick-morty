@@ -1,5 +1,8 @@
+body {
+  background-color: #44281d;
+}
+
 header {
-  background-color: #7664c9;
   height: 40px;
   border-radius: 10px;
 }
@@ -26,7 +29,7 @@ header {
 
 .search {
   padding: 2rem;
-  background-color: #90e0ef;
+  background-color: #97ce4c;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -41,7 +44,7 @@ header {
 }
 .search-button {
   font-size: 16PX;
-  background-color: #caf0f8;
+  background-color: #e89ac7;
   padding: 5PX;
   margin-left: 10PX;
   border-radius: 5px;
@@ -54,7 +57,6 @@ header {
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 20%);
-  background-color: #caf0f8;
 }
 
 .character-card {
@@ -67,7 +69,7 @@ header {
   border: 1px solid rgb(54, 27, 27);
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  background-color: #90e0ef;
+  background-color: cyan;
 }
 .character-card:hover {
   transform: scale(1.1);
@@ -82,6 +84,11 @@ header {
   width: 200px;
   padding: 15px;
   border-radius: 40px;
+}
+
+.character-location {
+  display: flex;
+  flex-direction: column;
 }
 
 .character-status {
