@@ -2,6 +2,7 @@ let page = 1
 
 const createCard = (character) => {   
     
+    console.log(character)
     const card = document.createElement("div")
     card.classList.add ("character-card")        
     const infoDiv = document.createElement("div")
@@ -55,7 +56,7 @@ const loadCharecter = async(url) => {
         characterGrid.innerHTML = ''        
 
         for (const character of characters) {
-            const detailResponse = await axios.get(character.url)            
+            const detailResponse = await axios.get(character.url)                     
             const characterCard = createCard(detailResponse.data)            
             characterGrid.appendChild(characterCard)
         }
