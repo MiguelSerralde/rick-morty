@@ -146,6 +146,9 @@ header {
   .character-image-container img {
     width: 150px;
   }
+  .character-status {
+    font-size: 15px;
+  }
 }
 @media (max-width: 900px) {
   .grid {
