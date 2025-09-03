@@ -1,8 +1,7 @@
 let page = 1
 
 const createCard = (character) => {   
-    
-    console.log(character)
+       
     const card = document.createElement("div")
     card.classList.add ("character-card")        
     const infoDiv = document.createElement("div")
@@ -12,7 +11,7 @@ const createCard = (character) => {
     name.classList.add("character-name")
     name.textContent = character.name
 
-    /*const locationDiv = document.createElement("div")
+    const locationDiv = document.createElement("div")
     locationDiv.classList.add("character-location")
     
     const locationSpan = document.createElement("span")
@@ -29,9 +28,9 @@ const createCard = (character) => {
     const statusCharacterSpan = document.createElement("span")
     statusCharacterSpan.classList = ("character-status", character.status)
     statusCharacterSpan.innerHTML = "<b>Status:</b> " + character.status
-    */
+    
     infoDiv.appendChild(name)
-    /*infoDiv.appendChild(locationDiv)
+    infoDiv.appendChild(locationDiv)
     locationDiv.appendChild(species)
     locationDiv.appendChild(statusCharacter)
     statusCharacter.appendChild(statusCharacterSpan)
@@ -48,7 +47,7 @@ const createCard = (character) => {
 
     card.appendChild(infoDiv)
     card.appendChild(imageContainer)
-    */
+    
     return card
     
 }

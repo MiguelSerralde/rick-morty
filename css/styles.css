@@ -59,7 +59,7 @@ header {
   grid-template-columns: repeat(5, 20%);
 }
 
-.character-card {
+.character-card, .episode-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,12 +71,12 @@ header {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   background-color: cyan;
 }
-.character-card:hover {
+.character-card:hover, .episode-card:hover {
   transform: scale(1.1);
   transition: 0.5s;
   box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
 }
-.character-card .character-name {
+.character-card .character-name, .episode-card .character-name {
   margin-bottom: 0px;
 }
 
@@ -113,6 +113,13 @@ header {
   font-style: italic;
 }
 
+.episode-info {
+  margin: 10px;
+}
+.episode-info_episode {
+  margin: 0;
+}
+
 .movePage {
   display: flex;
   justify-content: center;
@@ -134,6 +141,22 @@ header {
 
 @media (max-width: 1220px) {
   .grid {
-    grid-template-columns: repeat(4, 20%);
+    grid-template-columns: repeat(4, 25%);
+  }
+  .character-image-container img {
+    width: 150px;
+  }
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+@media (max-width: 650px) {
+  .nav {
+    font-size: 1rem;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 50%);
   }
 }/*# sourceMappingURL=styles.css.map */
