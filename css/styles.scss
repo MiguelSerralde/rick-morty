@@ -20,8 +20,7 @@ $searchColor: #90e0ef;
             1px 1px 0 black;
 }
 
-@mixin hoverCursor {
-    cursor: pointer;
+@mixin hoverCursor {    
     transform: scale(1.1);
     transition: 0.5s;
     box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.3);
@@ -41,7 +40,12 @@ header {
         font-weight: bolder;        
         text-decoration: none;
         padding-left: 2rem;  
-        @include styleText;      
+        @include styleText;     
+        
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.5s;
+        }
     }
 }
 
@@ -113,8 +117,9 @@ header {
     border-radius: 10px;
     padding: 5px;
     text-transform: uppercase;
-    .Alive {        
-        font-weight: bold; 
+    font-weight: bolder;
+
+    .Alive {                
         color: rgb(39, 82, 55);       
     }
 
@@ -143,6 +148,7 @@ header {
         background-color: #90e0ef;
 
         &:hover {
+            cursor: pointer;
             @include hoverCursor;
         }
     }
